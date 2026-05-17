@@ -1,16 +1,20 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
+    const {user} = useSelector(state => state.auth)
+
+
     const [menuOpen, setMenuOpen] = React.useState(false);
 
     const logos = [
-        'https://saasly.prebuiltui.com/assets/companies-logo/instagram.svg',
-        'https://saasly.prebuiltui.com/assets/companies-logo/framer.svg',
-        'https://saasly.prebuiltui.com/assets/companies-logo/microsoft.svg',
-        'https://saasly.prebuiltui.com/assets/companies-logo/huawei.svg',
-        'https://saasly.prebuiltui.com/assets/companies-logo/walmart.svg',
-    ]
+  'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg',
+  'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
+  'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
+  'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
+  'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg',
+]
     return (
         <>
             <div className="min-h-screen pb-20">
@@ -28,12 +32,18 @@ const Hero = () => {
                     </div>
 
                     <div className="flex gap-2">
-                        <Link to='/app?state=register' className="hidden md:block px-6 py-2 bg-green-500 hover:bg-green-700 active:scale-95 transition-all rounded-full text-white">
+                        <Link to='/app?state=register' className="hidden md:block px-6 py-2 bg-green-500 hover:bg-green-700 active:scale-95 transition-all rounded-full text-white" hidden={user}>
                             Get started
                         </Link>
-                        <Link to='/app?state=login' className="hidden md:block px-6 py-2 border active:scale-95 hover:bg-slate-50 transition-all rounded-full text-slate-700 hover:text-slate-900" >
+                        <Link to='/app?state=login' className="hidden md:block px-6 py-2 border active:scale-95 hover:bg-slate-50 transition-all rounded-full text-slate-700 hover:text-slate-900"hidden={user} >
                             Login
                         </Link>
+                      
+<Link to='/app' className='hidden md:block px-8 py-2 bg-green-500
+hover:bg-green-700 active:scale-95 transition-all rounded-full text-white'
+hidden={!user}>
+    Dashboard
+</Link>      
                     </div>
 
                     <button onClick={() => setMenuOpen(true)} className="md:hidden active:scale-90 transition" >
