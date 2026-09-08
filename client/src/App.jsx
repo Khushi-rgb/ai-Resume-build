@@ -5,6 +5,7 @@ import Layout from './pages/Layout'
 import Dashboard from './pages/Dashboard'
 import ResumeBuilder from './pages/ResumeBuilder'
 import Preview from './pages/Preview'
+import ATS from './pages/ATS'
 import Login from './pages/Login'
 import { useDispatch } from 'react-redux'
 import api from './configs/api'
@@ -45,7 +46,7 @@ useEffect(()=>{
       <Route path='app' element={<Layout/>} >
       <Route index element={<Dashboard/>} />
       <Route path='builder/:resumeId' element={<ResumeBuilder/>} />
-        
+      <Route path='ats' element={<ATS/>} />
       </Route>
 
        <Route path='/view/:resumeId' element={<Preview/>}/>
